@@ -208,7 +208,7 @@ while True:
         CD_eff = drag_coefficient * flaps[setting]["CD_mult"]
 
         v_stall = math.sqrt((2*weight) / (rho * CL_eff * wing_area))
-        vr = 1.2 * v_stall
+        vr = 1.3 * v_stall
 
         if vr - wind < 10:
             continue
@@ -226,7 +226,7 @@ while True:
             drag = 0.5 * rho * v**2 * wing_area * CD_eff
             rolling_resistance = 0.02 * mass * g
             
-            thrust_eff = thrust * (1 - v / 250)  #thrust isnt constant anymore. eg- if v =100, only 60% thrust will be left
+            thrust_eff = thrust * (1 - v / 300)  #thrust isnt constant anymore. eg- if v =100, only 60% thrust will be left
             net_force = thrust_eff - drag - rolling_resistance
             acceleration = net_force/mass
             v += acceleration * dt
