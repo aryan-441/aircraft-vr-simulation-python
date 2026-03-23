@@ -5,54 +5,106 @@ import matplotlib.pyplot as plt
 g = 9.81
 rho = 1.225 
 
-aircraft_data = {  #figures are approximations 
-    "Commercial": {
+aircraft_data = {
+    "Commercial": { #figures are approximations
 
         "A320": {
             "mass": 70000,
             "S": 122,
-            "CL": 1.8,
-            "CD": 0.03,
-            "thrust": 180000,
+            "CL": 1.6,
+            "CD": 0.025,
+            "thrust": 240000,
             "max_headwind": 18,
-            "max_tailwind": 7,
+            "max_tailwind": 5,
+
             "flaps": {
-                0: {"CL_mult": 1.0, "CD_mult": 1.0},
-                5: {"CL_mult": 1.1, "CD_mult": 1.3},
-                10: {"CL_mult": 1.2, "CD_mult": 1.6},
-                15: {"CL_mult": 1.3, "CD_mult": 2.0}
+                0:  {"CL_mult": 0.9, "CD_mult": 0.9},
+                5:  {"CL_mult": 1.1, "CD_mult": 1.3},
+                10: {"CL_mult": 1.3, "CD_mult": 1.7},
+                15: {"CL_mult": 1.5, "CD_mult": 2.2}
             }
         },
 
         "B737": {
-            "mass": 65000,
-            "S": 105,
+            "mass": 68000,
+            "S": 125,
             "CL": 1.7,
-            "CD": 0.03,
-            "thrust": 170000,
+            "CD": 0.027,
+            "thrust": 240000,
             "max_headwind": 18,
-            "max_tailwind": 7,
+            "max_tailwind": 5,
+
             "flaps": {
-                1: {"CL_mult": 1.05, "CD_mult": 1.2},
-                5: {"CL_mult": 1.15, "CD_mult": 1.5},
-                10: {"CL_mult": 1.25, "CD_mult": 1.9},
-                15: {"CL_mult": 1.3, "CD_mult": 2.3}
+                1:  {"CL_mult": 1.0, "CD_mult": 1.2},
+                5:  {"CL_mult": 1.2, "CD_mult": 1.5},
+                10: {"CL_mult": 1.4, "CD_mult": 1.9},
+                15: {"CL_mult": 1.6, "CD_mult": 2.4}
             }
         },
 
         "B777": {
             "mass": 250000,
             "S": 427,
-            "CL": 1.9,
-            "CD": 0.035,
-            "thrust": 350000,
+            "CL": 1.6,
+            "CD": 0.028,
+            "thrust": 900000,
             "max_headwind": 20,
-            "max_tailwind": 10,
+            "max_tailwind": 7,
+
             "flaps": {
-                5: {"CL_mult": 1.05, "CD_mult": 1.3},
-                10: {"CL_mult": 1.1, "CD_mult": 1.6},
-                15: {"CL_mult": 1.2, "CD_mult": 2.0},
-                20: {"CL_mult": 1.25, "CD_mult": 2.4}
+                5:  {"CL_mult": 1.1, "CD_mult": 1.3},
+                10: {"CL_mult": 1.25, "CD_mult": 1.7},
+                15: {"CL_mult": 1.4, "CD_mult": 2.1},
+                20: {"CL_mult": 1.55, "CD_mult": 2.6}
+            }
+        }
+    },
+
+    "Fighter": {
+
+        "F35 Lightning II": {
+            "mass": 24000,
+            "S": 42.7,
+            "CL": 1.4,
+            "CD": 0.02,
+            "thrust": 180000,
+            "max_headwind": 25,
+            "max_tailwind": 5,
+
+            "flaps": {
+                0: {"CL_mult": 1.0, "CD_mult": 1.0}
+            }
+        },
+
+        "F22 Raptor": {
+            "mass": 27000,
+            "S": 78,
+            "CL": 1.3,
+            "CD": 0.022,
+            "thrust": 300000,
+            "max_headwind": 25,
+            "max_tailwind": 5,
+
+            "flaps": {
+                0:  {"CL_mult": 1.0, "CD_mult": 1.0},
+                10: {"CL_mult": 1.2, "CD_mult": 1.3},
+                20: {"CL_mult": 1.4, "CD_mult": 1.8}
+            }
+        },
+
+        "Su57": {
+            "mass": 26000,
+            "S": 78.8,
+            "CL": 1.5,
+            "CD": 0.023,
+            "thrust": 320000,
+            "max_headwind": 30,
+            "max_tailwind": 7,
+
+            "flaps": {
+                0:  {"CL_mult": 1.0, "CD_mult": 1.0},
+                10: {"CL_mult": 1.25, "CD_mult": 1.4},
+                20: {"CL_mult": 1.5, "CD_mult": 2.0}
             }
         }
     },
@@ -62,75 +114,17 @@ aircraft_data = {  #figures are approximations
         "C172": {
             "mass": 1100,
             "S": 16.2,
-            "CL": 1.5,
-            "CD": 0.04,
-            "thrust": 2000,
+            "CL": 1.2,
+            "CD": 0.03,
+            "thrust": 900,
             "max_headwind": 12,
-            "max_tailwind": 4,
-            "flaps": {
-                0: {"CL_mult": 1.0, "CD_mult": 1.0},
-                10: {"CL_mult": 1.1, "CD_mult": 1.2},
-                20: {"CL_mult": 1.2, "CD_mult": 1.5},
-                30: {"CL_mult": 1.3, "CD_mult": 1.9}
-            }
-        }
-    },
+            "max_tailwind": 3,
 
-    "Fighters": {
-
-        "F16": {
-            "mass": 12000,
-            "S": 27.8,
-            "CL": 1.6,
-            "CD": 0.02,
-            "thrust": 160000,
-            "max_headwind": 25,
-            "max_tailwind": 10,
             "flaps": {
-                0: {"CL_mult": 1.0, "CD_mult": 1.0},
-                10: {"CL_mult": 1.05, "CD_mult": 1.2}
-            }
-        },
-
-        "F22 Raptor": {
-            "mass": 19700,
-            "S": 78.0,
-            "CL": 1.7,
-            "CD": 0.02,
-            "thrust": 350000,
-            "max_headwind": 30,
-            "max_tailwind": 12,
-            "flaps": {
-                0: {"CL_mult": 1.0, "CD_mult": 1.0},
-                10: {"CL_mult": 1.05, "CD_mult": 1.2}
-            }
-        },
-
-        "F35 Lightning II": {
-            "mass": 22000,
-            "S": 42.7,
-            "CL": 1.6,
-            "CD": 0.025,
-            "thrust": 220000,
-            "max_headwind": 25,
-            "max_tailwind": 10,
-            "flaps": {
-                0: {"CL_mult": 1.0, "CD_mult": 1.0},
-                10: {"CL_mult": 1.05, "CD_mult": 1.2}
-            }
-        },
-
-        "Su-57": {
-            "mass": 25000,
-            "S": 78.8,
-            "CL": 1.7,
-            "CD": 0.025,
-            "thrust": 320000,
-            "max_headwind": 25,
-            "max_tailwind": 10,
-            "flaps": {
-                0: {"CL_mult": 1.0, "CD_mult": 1.0},
-                10: {"CL_mult": 1.05, "CD_mult": 1.2}
+                0:  {"CL_mult": 1.0, "CD_mult": 1.0},
+                10: {"CL_mult": 1.2, "CD_mult": 1.2},
+                20: {"CL_mult": 1.35, "CD_mult": 1.5},
+                30: {"CL_mult": 1.5, "CD_mult": 1.8}
             }
         }
     }
@@ -157,6 +151,7 @@ while True:
         mass = data['mass']
         wing_area = data['S']
         lift_coefficient = data['CL']
+        
         drag_coefficient = data["CD"]
         thrust = data['thrust']
         max_headwind = data["max_headwind"]
@@ -208,7 +203,9 @@ while True:
         CD_eff = drag_coefficient * flaps[setting]["CD_mult"]
 
         v_stall = math.sqrt((2*weight) / (rho * CL_eff * wing_area))
-        vr = 1.3 * v_stall
+        rotation_factor = 1.2 if mass < 100000 else 1.346
+
+        vr = rotation_factor * v_stall
 
         if vr - wind < 10:
             continue
@@ -224,9 +221,11 @@ while True:
 
         while v < vr:
             drag = 0.5 * rho * v**2 * wing_area * CD_eff
-            rolling_resistance = 0.02 * mass * g
+            lift = 0.5 * rho * v**2 * wing_area * CL_eff
+            normal_force = max(0, mass * g - lift)
+            rolling_resistance = 0.01 * normal_force
             
-            thrust_eff = thrust * (1 - v / 300)  #thrust isnt constant anymore. eg- if v =100, only 60% thrust will be left
+            thrust_eff = thrust * (rho / 1.225) * (1 - v / 300)  #thrust isnt constant anymore. eg- if v =100, only 60% thrust will be left
             net_force = thrust_eff - drag - rolling_resistance
             acceleration = net_force/mass
             v += acceleration * dt
