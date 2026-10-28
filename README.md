@@ -1,7 +1,6 @@
 # JTS Simple Python Simulator VR
 
-**Date already stated in this project’s README:** 22 March 2026  
-**Source file dates in Google Drive File Explorer:** Created 20 March 2026; last modified 28 May 2026. These are file metadata dates, not a verified development timeline.
+**Project date: 22 March 2026. Updated: 28 May 2026.**
 
 This interactive Python program estimates aircraft takeoff performance. Despite “VR” in the filename, it does not implement virtual reality; it models an aircraft’s ground roll and plots the results.
 
@@ -15,6 +14,4 @@ Python 3 and Matplotlib. Install Matplotlib with `python -m pip install matplotl
 
 ## Limitations
 
-Aircraft values and the model are approximations. The calculation is an educational programming/physics exercise, not operational aviation guidance. Input validation and physics-model verification are needed.
-
-No license has been selected.
+Aircraft values and the model are approximations. The calculation is an educational programming and physics exercise, not operational aviation guidance. Input validation and physics-model verification are needed.
