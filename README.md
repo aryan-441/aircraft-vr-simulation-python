@@ -1,6 +1,10 @@
-#  Simple Python Simulator VR
+# JTS Simple Python Simulator VR
 
 **Project date: 22 March 2026. Updated: 28 May 2026.**
+
+## Blog Article
+
+**[https://clearedtoapproach.blogspot.com/2026/03/aircraft-takeoff-speed-calculation-python.html](https://clearedtoapproach.blogspot.com/2026/03/aircraft-takeoff-speed-calculation-python.html)**
 
 This interactive Python program estimates aircraft takeoff performance. Despite “VR” in the filename, it does not implement virtual reality; it models an aircraft’s ground roll and plots the results.
 
